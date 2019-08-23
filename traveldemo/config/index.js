@@ -10,7 +10,18 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      // '/wxarticle': {
+      '/api': {
+        target: 'http://localhost:8080',
+        // target: 'https://wanandroid.com',
+        changeOrigin: true,  //是否跨域
+        pathRewrite: {
+          '^/api': '/static/mock'
+          // '^/wxarticle': '/wxarticle'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -20,7 +31,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */
